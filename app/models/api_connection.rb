@@ -1,0 +1,2 @@
+class ApiConnection < ApplicationRecord
+end
