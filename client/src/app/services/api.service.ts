@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BindingFlags } from '@angular/compiler/src/core';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +8,7 @@ export class ApiService {
   constructor(public http: HttpClient) { }
 
   get_host(){
-    if(window.location.hostname == "localhost"){
-      return "http://localhost:3000/";
-    } else {
-      return window.location.hostname + "/";
-    }
+    return window.location.hostname == "localhost" ? "http://localhost:3000/" : window.location.hostname + "/";
   }
 
   get(path) {
