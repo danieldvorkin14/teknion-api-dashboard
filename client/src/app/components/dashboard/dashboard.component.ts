@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
   }
 
   get_status_label(response){
-    return response.status;
+    return Number(response.status) == response.status ? response.status : +response.status.split(" ")[0];
   }
 
   get_reason(response){
@@ -48,12 +48,16 @@ export class DashboardComponent implements OnInit {
   }
 
   get_status(response){
-    if([200, 302, 403].includes(response.status)) {
+    response.status = this.get_status_label(response);
+
+    if( [100,101,102,103].includes(response.status) ){
+      var newStatus = 'info';
+    } else if( [200,201,202,203,204,205,206,207,208,226].includes(response.status) ){
       var newStatus = 'success';
-    } else if(response.status == 404){
-      var newStatus = 'danger';
-    } else {
+    } else if( [300,301,302,303,304,305,306,307,308].includes(response.status) ){
       var newStatus = 'warning';
+    } else {
+      var newStatus = 'danger';
     }
 
     return newStatus;
