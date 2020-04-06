@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :api_connections
+
+  get '/get_endpoint_status', to: 'api_connections#get_endpoint_status', as: 'get_endpoint_status'
 end
