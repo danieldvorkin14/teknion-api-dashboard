@@ -1,4 +1,12 @@
 class ApiConnection < ApplicationRecord
+  serialize :status, Hash
+  after_create :set_status
+
+  def set_status
+    self.status = check_status
+    self.save
+  end
+
   def check_status
     resp = begin
       Faraday.get url

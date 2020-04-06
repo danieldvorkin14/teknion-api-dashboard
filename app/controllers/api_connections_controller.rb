@@ -3,16 +3,7 @@ class ApiConnectionsController < ApplicationController
 
   # GET /api_connections
   def index
-    @api_connections = ApiConnection.all.map do |ac|
-      {
-        id: ac.id,
-        name: ac.name,
-        url: ac.url,
-        status: ac.check_status,
-        active: ac.active ? "Active" : "Inactive",
-        description: ac.description.truncate(20)
-      }
-    end
+    @api_connections = ApiConnection.all
     
     render json: @api_connections
   end
@@ -45,13 +36,6 @@ class ApiConnectionsController < ApplicationController
   # DELETE /api_connections/1
   def destroy
     @api_connection.destroy
-  end
-
-  def get_endpoint_status
-    api_connection = ApiConnection.find params[:api_id]
-    resp = api_connection.check_status
-
-    render json: resp    
   end
 
   private

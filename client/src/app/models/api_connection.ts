@@ -3,5 +3,6 @@ export class ApiConnection{
     public name:string;
     public status:string;
     public active:boolean;
+    public url:string;
     public description:string;
   }

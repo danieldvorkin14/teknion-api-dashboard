@@ -6,4 +6,12 @@
     height:38px;
     margin-bottom: 0px !important;
     border-radius:25px;
+    min-width:95px;
+    max-width:95px;
+    width:95px;
+}
+
+.alert-msg {
+    position:relative;
+    top:-8px;
 }
