@@ -8,7 +8,7 @@ export class ApiService {
   constructor(public http: HttpClient) { }
 
   get_host(){
-    return window.location.hostname == "localhost" ? "http://localhost:3000/" : window.location.href;
+    return window.location.hostname == "localhost" ? "http://localhost:3000/" : window.location.origin + "/";
   }
 
   get(path) {
