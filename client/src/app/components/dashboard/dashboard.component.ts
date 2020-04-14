@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
   }
 
   delete(id){
-    this.apiService.delete("/api_connections/" + id).subscribe((r)=>{
+    this.apiService.delete("api_connections/" + id).subscribe((r)=>{
       this.rows = this.rows.filter((p, i) => {
         return Number(id) !== p.id
       }, this.rows);
@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
   }
 
   refresh(id){
-    this.apiService.get("/api_connections/" + id).subscribe((data: ApiConnection) => {  
+    this.apiService.get("api_connections/" + id).subscribe((data: ApiConnection) => {  
       var itemIndex = this.rows.findIndex(row => row.id == id);
       this.rows[itemIndex] = data;  
     })
