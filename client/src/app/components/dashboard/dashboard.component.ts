@@ -39,6 +39,17 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  refresh(id){
+    this.apiService.get("/api_connections/" + id).subscribe((data: ApiConnection) => {  
+      var itemIndex = this.rows.findIndex(row => row.id == id);
+      this.rows[itemIndex] = data;  
+    })
+  }
+
+  getItem(row, id){
+    return row.id == id ? row : null;
+  }
+
   get_status_label(response){
     return Number(response.status) == response.status ? response.status : +response.status.split(" ")[0];
   }

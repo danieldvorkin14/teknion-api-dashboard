@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Components
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { EditConnectionComponent } from './components/edit-connection/edit-connection.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent
+  },
+  {
+    path: 'edit_api/:id',
+    component: EditConnectionComponent
   }
 ];
 
